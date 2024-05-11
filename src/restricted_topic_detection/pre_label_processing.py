@@ -62,8 +62,8 @@ def rename_files(processed_dir, renamed_dir):
     return renamed_dir
 
 if __name__ == "__main__":
-    processed_dir = './src/restricted_topic_detection/processed_dataset'
-    renamed_dir = './src/restricted_topic_detection/renamed_dataset'
+    processed_dir = './processed_dataset'
+    renamed_dir = './renamed_dataset'
     
     renamed_dir = rename_files(processed_dir, renamed_dir)
     print(f"Files renamed and copied to directory: {renamed_dir}")
