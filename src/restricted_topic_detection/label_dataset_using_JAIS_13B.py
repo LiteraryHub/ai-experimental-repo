@@ -217,8 +217,8 @@ def update_json_files(source_dir, target_dir):
 
 
 if __name__ == "__main__":
-    source_directory = './src/nlp/restricted_topic_detection/renamed_dataset'
-    target_directory = './src/nlp/restricted_topic_detection/labeled_dataset'
+    source_directory = './renamed_dataset'
+    target_directory = './labeled_dataset'
     start_time = time.time()
     update_json_files(source_directory, target_directory)
     print("Finihsed!")
