@@ -85,7 +85,7 @@ def parse_model_response(model_response):
         int: The label extracted from the model response. Returns 0 if "0" is found in the response,
         returns 1 if "1" is found in the response, otherwise returns 1.
     """
-    cleaned_response = model_response.strip()
+    cleaned_response = model_response.strip().replace("\n", " ")
     if "0" in cleaned_response:
         return 0
     elif "1" in cleaned_response:
@@ -129,13 +129,13 @@ def check_restricted_content(text):
 
     ### Input Format: 
     [|Human|] {text}
+    
+    ### Output Format: Must be a single digit, "0" or "1".
 
     ### Response: [|AI|]
     """.format(text=text)
 
     model_response = get_response(prompt)
-    print(type(model_response))
-    print(model_response)
     return parse_model_response(model_response[1])
 
 
