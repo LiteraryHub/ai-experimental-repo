@@ -140,6 +140,8 @@ def check_restricted_content(text):
     """.format(text=text)
 
     model_response = get_response(prompt)
+    print(type(model_response))
+    print(model_response)
     return parse_model_response(model_response[1])
 
 
