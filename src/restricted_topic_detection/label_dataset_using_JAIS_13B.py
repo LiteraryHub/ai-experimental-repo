@@ -86,6 +86,9 @@ def parse_model_response(model_response):
         returns 1 if "1" is found in the response, otherwise returns 1.
     """
     cleaned_response = model_response.strip().replace("\n", " ")
+    
+    cleaned_response = ''.join(filter(str.isdigit, cleaned_response))
+    
     if "0" in cleaned_response:
         return 0
     elif "1" in cleaned_response:
