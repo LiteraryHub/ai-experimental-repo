@@ -130,13 +130,7 @@ def check_restricted_content(text):
     ### Input Format: 
     [|Human|] {text}
 
-    ### Expected Response Format:
-    [|AI|] Single digit indicating presence of prohibited themes (0 or 1).
-
-    ### Additional Guidance:
-    - Utilize contextual clues and the broader implications of the text to assess potential subtle or indirect instances of prohibited content.
-    - Consider the cultural and societal norms that may affect the interpretation of sensitive themes.
-    - Maintain an unbiased and objective stance throughout your analysis, focusing strictly on the content of the text in relation to the outlined prohibited themes.
+    ### Response: [|AI|]
     """.format(text=text)
 
     model_response = get_response(prompt)
