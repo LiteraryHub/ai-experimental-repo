@@ -108,32 +108,42 @@ def check_restricted_content(text):
     """
     prompt = """
     ### Instruction:
-    قم بتحليل النص المقدم بعمق لتحديد ما إذا كان يحتوي على مواضيع محظورة. فيما يلي أمثلة مفصلة وشروحات للمواضيع التي تعتبر محظورة. فكر بعمق في سياق ودلالات كل جانب مذكور. يجب أن تكون استجابتك رقمًا واحدًا فقط، "0" أو "1"، دون تقديم أي نص أو رأي إضافي.
-        
-    1. **المحتوى الديني الحساس**: يشمل الإساءة إلى الديانات، السخرية من النصوص الدينية، الرموز، الطقوس، أو الشخصيات الدينية، وترويج الكراهية الدينية أو الطائفية.
-    2. **اللعن أو الكلام البذيء**: استخدام اللغة الفاحشة، السباب، أو الكلام الذي يُعتبر مهينًا أو مسيئًا بشكل واضح.
-    3. **المحتوى الجنسي**: الوصف الصريح للأفعال الجنسية، المواد الإباحية، أو المحتوى الذي يروج للاستغلال الجنسي أو غير الملائم.
-    4. **الحساسية السياسية**: المحتوى الذي قد يثير الاضطرابات السياسية، ينتقد الحكومات أو الشخصيات السياسية بطريقة مثيرة للجدل، أو يعتبر دعاية سياسية.
-    5. **العنف وخطاب الكراهية**: ترويج العنف، الإرهاب، أو الكراهية ضد الأفراد أو الجماعات على أساس العرق، الدين، الجنس، الهوية الجنسية، أو أي خصائص أخرى.
-    6. **الأنشطة غير القانونية**: تشجيع أو ترويج السلوكيات أو الأنشطة غير القانونية مثل المخدرات، السرقة، الاحتيال، أو القرصنة.
-    7. **المحتوى العنصري أو الجنسي**: المحتوى الذي يروج للتمييز، يعزز الصور النمطية الضارة، أو يستخدم الإهانات العنصرية أو الجنسية.
-    8. **المحتوى الضار أو الخطير**: ترويج الأذى الذاتي، التحديات الخطيرة، الإرشادات لإنشاء الأسلحة، أو أي ممارسات غير آمنة.  
-    
-    في نهاية التحليل، قدم إجابة تتكون من رقم واحد فقط، بناءً على معايير المواضيع المحظورة المذكورة:
-    - إذا لم يحتوي النص على أي من المواضيع المحظورة، قدم "0".
-    - إذا احتوى النص على أي من المواضيع المحظورة، قدم "1".
+    Carefully analyze the provided Arabic text to identify the presence of any prohibited themes listed below. You must consider both the explicit and implicit content, evaluating the context, nuances, and implications of each mentioned aspect. This analysis is critical in determining compliance with the outlined prohibitions. Your response should be a single digit, "0" or "1", based solely on the criteria given below:
 
-    ### Note: If you are not sure, return 1 but first make a deep analysis for the text.
-        
-    ### Input: [|Human|] {text}
-    ### Response: [|AI|]
+    #### Prohibited Themes:
+    1. **Sensitive Religious Content**: This includes any form of disrespect or derogatory remarks towards any religion, mockery of religious scriptures, symbols, rituals, or revered figures, and the promotion of religious or sectarian hatred or violence.
+    2. **Profanity and Obscene Language**: Encompasses the use of any foul, vulgar, or obscene language, insults, slurs, or any form of speech that is overtly offensive or abusive towards any individual or group.
+    3. **Sexual Content**: Detailed descriptions or depictions of sexual acts, explicit or implicit promotion of pornography, or any content that could be seen as promoting or glorifying sexual exploitation or harassment.
+    4. **Political Sensitivity**: Content that could potentially incite political unrest, contains controversial or provocative criticism of governments or political figures, or could be interpreted as political propaganda.
+    5. **Violence and Hate Speech**: Advocacy of violence or terrorism, content promoting or inciting hatred against individuals or groups based on race, religion, gender, sexual identity, or other distinguishing characteristics.
+    6. **Illegal Activities**: Promotion or encouragement of illegal acts such as drug use, theft, fraud, hacking, or piracy.
+    7. **Racist or Sexist Content**: Any content that promotes racial or sexual discrimination, reinforces harmful stereotypes, or includes racial or sexual insults.
+    8. **Harmful or Dangerous Content**: Promotions of self-harm, participation in dangerous challenges, instructions for creating weapons, or engaging in unsafe practices.
+
+    ### Evaluation Criteria:
+    - Respond with "0" if none of the prohibited themes are present within the text.
+    - Respond with "1" if any of the prohibited themes are identified in the text.
+
+    ### Note:
+    In cases of uncertainty, prioritize a comprehensive re-evaluation of the text, examining each element in question more closely. If doubt persists after a detailed analysis, respond with "1" to err on the side of caution.
+
+    ### Input Format: 
+    [|Human|] {text}
+
+    ### Expected Response Format:
+    [|AI|] {Single digit indicating presence of prohibited themes}
+
+    ### Additional Guidance:
+    - Utilize contextual clues and the broader implications of the text to assess potential subtle or indirect instances of prohibited content.
+    - Consider the cultural and societal norms that may affect the interpretation of sensitive themes.
+    - Maintain an unbiased and objective stance throughout your analysis, focusing strictly on the content of the text in relation to the outlined prohibited themes.
     """.format(text=text)
 
     model_response = get_response(prompt)
     return parse_model_response(model_response[1])
 
 
-def predict_with_confidence(text, iterations=5):
+def predict_with_confidence(text, iterations=3):
     """
     Repeats the restricted content check multiple times to determine the most common label and its confidence level.
     
