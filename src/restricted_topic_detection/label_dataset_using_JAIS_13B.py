@@ -131,7 +131,7 @@ def check_restricted_content(text):
     [|Human|] {text}
 
     ### Expected Response Format:
-    [|AI|] {Single digit indicating presence of prohibited themes}
+    [|AI|] Single digit indicating presence of prohibited themes (0 or 1).
 
     ### Additional Guidance:
     - Utilize contextual clues and the broader implications of the text to assess potential subtle or indirect instances of prohibited content.
