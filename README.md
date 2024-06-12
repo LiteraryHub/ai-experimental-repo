@@ -11,16 +11,12 @@ This repository is designed for conducting AI experiments, prototyping new model
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Repository Structure](#repository-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your local machine:
 
-- Python 3.8 or later
+- Python 3.11 or later
 - Jupyter Notebook
 - Virtualenv (optional but recommended)
 
@@ -73,40 +69,6 @@ To start experimenting with the provided Jupyter Notebooks, follow these steps:
 
 This repository is intended to work in conjunction with the [ai-backend](https://github.com/yourusername/ai-backend) repository. You can run experiments here and integrate successful models or approaches into the main backend codebase.
 
-## Repository Structure
-
-The repository is structured as follows:
-
-```
-ai-experimental-repo/
-│
-├── notebooks/
-│   ├── experiment1.ipynb
-│   ├── experiment2.ipynb
-│   └── ...
-│
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── ...
-│
-├── scripts/
-│   ├── preprocess_data.py
-│   ├── train_model.py
-│   └── ...
-│
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
-
-- **notebooks/**: Contains Jupyter Notebooks for different experiments.
-- **data/**: Directory for storing raw and processed data.
-- **scripts/**: Python scripts for data preprocessing, model training, and other utilities.
-- **requirements.txt**: List of dependencies required for the project.
-- **README.md**: This README file.
-- **.gitignore**: Specifies files and directories to be ignored by Git.
-
 ## Contributing
 
 We welcome contributions to enhance this repository. To contribute, please follow these steps:
@@ -146,13 +108,3 @@ We welcome contributions to enhance this repository. To contribute, please follo
 7. **Create a Pull Request**
 
    Open a pull request to the main repository with a description of your changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any questions or issues, please contact the project maintainers through the repository's [issues page](https://github.com/yourusername/ai-experimental-repo/issues).
-
-Thank you for contributing to the AI Experimental Repository!
